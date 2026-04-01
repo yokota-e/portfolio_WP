@@ -112,6 +112,7 @@ img {
 
 .l-section {
     padding-block: clamp(5rem, 4.120rem + 3.756vw, 7.5rem);
+    padding-inline: 20px;
 
 }
 
@@ -132,7 +133,7 @@ img {
     display: flex;
     flex-direction: column;
     width: fit-content;
-    margin-block-end: 24px;
+    margin-block-end: 50px;
     margin-inline: auto;
 }
 
@@ -146,6 +147,7 @@ img {
     display: flex;
     flex-direction: column;
     gap: 10px;
+    padding: 20px;
 }
 
 
@@ -237,6 +239,8 @@ img {
 
 
 
+
+
 .c-section__title {
     font-weight: bold;
 }
@@ -262,6 +266,9 @@ img {
     font-size: 10px;
 }
 
+.c-works-card {
+    border: 1px dotted var(--grayish-yellow);
+}
 
 .c-works__link {
     background: var(--grayish-yellow);
