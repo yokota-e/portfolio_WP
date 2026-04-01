@@ -267,7 +267,7 @@ img {
 }
 
 .c-works-card {
-    border: 0.5px solid var(--olive);
+    border: 1px dotted var(--grayish-yellow);
 }
 
 .c-works__link {
