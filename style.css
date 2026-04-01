@@ -30,6 +30,8 @@ body {
 
 img {
     width: 100%;
+    object-fit: cover;
+    object-position: top left;
 }
 
 /* レイアウト */
@@ -209,7 +211,7 @@ img {
     color: var(--olive);
     width: 100%;
     height: 356px;
-    background: var(--white);
+
 
 }
 
