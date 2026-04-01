@@ -23,13 +23,13 @@
                         <?php
                         while ($the_query->have_posts()): $the_query->the_post(); ?>
 
-                            <li class="l-works__list_desc">
+                            <li class="l-works__list_desc c-works-card">
                                 <?php if (has_post_thumbnail()): ?>
                                     <?php the_post_thumbnail('large'); ?>
                                 <?php endif; ?>
                                 <p class="c-section__title"><?php the_title(); ?></p>
                                 <p><?php the_content(); ?></p>
-                                <a href="works_detail.html" class="c-works__link">詳細を見る<i
+                                <a href="<?php the_permalink(); ?>" class="c-works__link">詳細を見る<i
                                         class="fa-solid fa-arrow-up-right-from-square"></i></a>
                             </li>
                         <?php endwhile; ?>
