@@ -1,43 +1,43 @@
 <?php get_header(); ?>
 
-<div class="l-mv">
+<div class="l-mv c-mv">
     <span class="c-mv__text">portfolio</span>
 </div>
 <main class="l-main">
     <?php if (have_posts()): ?>
         <?php while (have_posts()): the_post(); ?>
-            <section id="works" class="l-section">
+            <section id="works" class="l-section c-section">
                 <h1 data-sub="Works" class="l-title c-title"><?php echo '制作物' ?></h1>
-                <ul class="l-works__list">
-                    <li class="l-works__list_desc"><img src="./img/dummy.png" alt="作品1">
-                        <p class="c-section__title">作品1</p>
-                        <p>テキスト</p>
-                        <a href="works_detail.html" class="c-works__link">詳細を見る<i
-                                class="fa-solid fa-arrow-up-right-from-square"></i></a>
-                    </li>
+                <?php
+                $args = array(
+                    'post_type' => 'post',
+                    'posts_per_page' => 3,
+                    'post_status' => 'publish',
+                );
 
-                    <li class="l-works__list_desc"><img src="./img/dummy.png" alt="作品2">
-                        <p class="c-section__title">作品2</p>
-                        <p>テキスト</p>
-                        <a href="works_detail.html" class="c-works__link">詳細を見る<i
-                                class="fa-solid fa-arrow-up-right-from-square"></i></a>
-                    </li>
+                $the_query = new WP_Query($args);
+                if ($the_query->have_posts()):
 
-                    <li class="l-works__list_desc"><img src="./img/dummy.png" alt="作品3">
-                        <p class="c-section__title">作品3</p>
-                        <p>テキスト</p>
-                        <a href="works_detail.html#" class="c-works__link">詳細を見る<i
-                                class="fa-solid fa-arrow-up-right-from-square"></i></a>
-                    </li>
+                ?>
+                    <ul class="l-works__list">
+                        <?php
+                        while ($the_query->have_posts()): $the_query->the_post(); ?>
 
-                    <li class="l-works__list_desc"><img src="./img/dummy.png" alt="作品4">
-                        <p class="c-section__title">作品4</p>
-                        <p>テキスト</p>
-                        <a href="works_detail.html" class="c-works__link">詳細を見る<i
-                                class="fa-solid fa-arrow-up-right-from-square"></i></a>
-                    </li>
-
-                </ul>
+                            <li class="l-works__list_desc">
+                                <?php if (has_post_thumbnail()): ?>
+                                    <?php the_post_thumbnail('large'); ?>
+                                <?php endif; ?>
+                                <p class="c-section__title"><?php the_title(); ?></p>
+                                <p><?php the_content(); ?></p>
+                                <a href="works_detail.html" class="c-works__link">詳細を見る<i
+                                        class="fa-solid fa-arrow-up-right-from-square"></i></a>
+                            </li>
+                        <?php endwhile; ?>
+                    </ul>
+                <?php else: ?>
+                    <p class="c-common_text">掲載準備中です。</p>
+                <?php endif; ?>
+                <?php wp_reset_postdata(); ?>
             </section>
             <section id="about-me" class="l-section">
                 <div class="l-about">

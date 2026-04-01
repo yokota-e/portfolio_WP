@@ -1,56 +1,62 @@
 <?php get_header(); ?>
 
-<div class="l-mv">
-    <span class="c-mv__text">portfolio</span>
-</div>
 <main class="l-main">
     <?php if (have_posts()): ?>
         <?php while (have_posts()): the_post(); ?>
             <main class="l-main">
                 <section class="l-section">
-                    <h2 data-sub="Works" class="l-title c-title">制作物</h2>
+                    <h1 data-sub="Works" class="l-title c-title">制作物</h1>
                     <div class="l-works-detail">
 
                         <div class="l-works__list_desc">
-                            <img src="./img/dummy.png" alt="作品1">
+                            <?php the_post_thumbnail(); ?>
 
-                            <h3 class="c-section__title">コーポレートサイト『WED』</h3>
-                            <p>コーポレートサイトを作成しました。こちらでは、主にCSS設計の練習を意識して制作しました。</p>
-                            <a href="#" class="c-works__link" target="_blank">デモサイトを見る<i
+
+                            <h2 class="c-section__title"><?php the_title(); ?></h2>
+                            <p><?php the_content(); ?></p>
+                            <?php
+                            //デモサイトリンク先をカスタムフィールドから反映
+                            $works_link = SCF::get('works_link');
+                            ?>
+                            <a href="<?php echo $works_link; ?>" class="c-works__link" target="_blank">デモサイトを見る<i
                                     class="fa-solid fa-arrow-up-right-from-square"></i></a>
                         </div>
+                        <?php
+                        //使用言語情報をカスタムフィールドから反映
+                        $check = SCF::get('lang_list');
+                        $true_lang_list = array_filter($check[0], 'is_true_check');
+                        ?>
 
-                        <div>
-                            <p class="c-section__title">使用言語</p>
-                            <ul class="l-works-detail__list">
-                                <li class="c-section__li">HTML</li>
-                                <li class="c-section__li">CSS</li>
-                                <!-- <li class="c-section__li">JavaScript</li> -->
-                                <!-- <li class="c-section__li">PHP</li> -->
-                            </ul>
-                        </div>
+                        <?php if ($check): ?>
+                            <div>
+                                <p class="c-section__title">使用言語</p>
+                                <ul class="l-works-detail__list">
+                                    <?php foreach ($true_lang_list as $key => $list): ?>
+                                        <li class="c-section__li"><?php echo $key; ?></li>
+                                    <?php endforeach; ?>
 
+                                </ul>
+                            </div>
+                        <?php endif; ?>
+
+                        <?php
+                        //課題元情報をカスタムフィールドから反映
+                        $reference_text = SCF::get('reference_text');
+                        $blockquote_group = SCF::get('blockquote_group');
+
+                        ?>
                         <div>
                             <p class="c-section__title">課題元</p>
-                            <p>Codejumpの課題を使用しました。</p>
-                            <blockquote cite="https://code-jump.com/corporate2-menu/">
-                                <p>渋谷のWeb制作会社がコーポレートサイトを作るとのことでコーディングのお手伝いをします。事業内容や会社情報などを簡単にまとめたLPタイプのWebサイトです。</p>
+                            <p><?php echo $reference_text; ?></p>
+
+                            <blockquote cite="<?php echo $blockquote_group[0]['blockquote_url'] ?>">
+                                <p><?php echo $blockquote_group[0]['blockquote_text'] ?></p>
                             </blockquote>
 
-                            <a href="https://code-jump.com/corporate2-menu/" class="c-works_sublink" target="_blank">使用した課題ページ<i
+                            <a href="<?php echo $blockquote_group[0]['blockquote_url'] ?>" class="c-works_sublink" target="_blank">使用した課題ページ<i
                                     class="fa-solid fa-arrow-up-right-from-square"></i></a>
                         </div>
-                        <!-- モックアップ -->
-                        <div class="device device-iphone-x">
-                            <div class="device-frame">
-                                <img src="./img/dummy.png" alt="作品1">
-                            </div>
-                            <div class="device-stripe"></div>
-                            <div class="device-header"></div>
-                            <div class="device-sensors"></div>
-                            <div class="device-btns"></div>
-                            <div class="device-power"></div>
-                        </div>
+
                     </div>
                 </section>
                 <a href="#" class="l-topbtn c-topbtn"><i class="fa-solid fa-arrow-up"></i></a>

@@ -22,11 +22,16 @@
 <body>
     <header class="l-header">
         <div class="l-nav c-header ">
-            <a href="#">Yokota</a></h1>
+            <a href="<?php echo esc_url(home_url('/')); ?>">Yokota</a></h1>
             <nav>
                 <ul class="l-nav__link c-nav">
-                    <li><a href="#works">Works</a></li>
-                    <li><a href="#about-me">About Me</a></li>
+                    <?php if (is_front_page()): ?>
+                        <li><a href="#works">Works</a></li>
+                        <li><a href="#about-me">About Me</a></li>
+                    <?php else: ?>
+                        <li><a href="<?php echo esc_url(home_url('/')); ?>#works">Works</a></li>
+                        <li><a href="<?php echo esc_url(home_url('/')); ?>#about-me">About Me</a></li>
+                    <?php endif; ?>
                 </ul>
             </nav>
         </div>
