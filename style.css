@@ -1,0 +1,285 @@
+/*
+Theme Name: portfolio
+Theme URL: --
+Description: portfolioテーマ
+Author:Erika Yokota
+Version: 1.0
+*/
+
+
+/* 共通 */
+html {
+    scroll-behavior: smooth;
+}
+
+:root {
+    --white: #fff;
+    --black: #000;
+    --lightgray: #EEEEEE;
+    --grayish-yellow: #DDDACE;
+    --olive: #6D6B63;
+}
+
+body {
+    font-family: "Noto Sans JP", sans-serif;
+    font-size: 16px;
+    line-height: 1.6;
+    letter-spacing: 0.1em;
+
+}
+
+img {
+    width: 100%;
+}
+
+/* レイアウト */
+.l-header {
+    height: 56px;
+    position: absolute;
+    width: 100%;
+    z-index: 100;
+}
+
+
+.l-mv {
+    height: 300px;
+    position: relative;
+    overflow: hidden;
+    width: 100%;
+    padding-block-start: 122px;
+    padding-inline-start: 15px;
+}
+
+.l-mv::after {
+    content: "";
+    width: clamp(20rem, 17.799rem + 9.39vw, 26.25rem);
+    height: clamp(15.625rem, 14.965rem + 2.817vw, 17.5rem);
+    background: var(--lightgray);
+    border-radius: 66% 34% 63% 37% / 40% 62% 38% 60%;
+    position: absolute;
+    top: -30px;
+    right: 0;
+    z-index: -10;
+    animation: scale 5s linear infinite alternate, rotate 30s linear infinite, morphing 10s infinite;
+    ;
+}
+
+@keyframes scale {
+    0% {
+        transform: scale(0.4, 0.2);
+    }
+
+    100% {
+        transform: scale(1, 1.5);
+    }
+
+}
+
+@keyframes rotate {
+    0% {
+        transform: rotate(0deg);
+    }
+
+    100% {
+        transform: rotate(360deg);
+    }
+
+}
+
+@keyframes morphing {
+    0% {
+        border-radius: 66% 34% 63% 37% / 40% 62% 38% 60%;
+
+    }
+
+    25% {
+        border-radius: 58% 42% 75% 25%/76% 46% 54% 24%;
+    }
+
+    50% {
+        border-radius: 50% 50% 33% 67%/55% 27% 73% 45%;
+
+    }
+
+    75% {
+        border-radius: 33% 67% 58% 42%/63% 68% 32% 37%;
+    }
+}
+
+.l-section {
+    padding-block: clamp(5rem, 4.120rem + 3.756vw, 7.5rem);
+
+}
+
+.l-nav {
+    padding-inline: 20px;
+}
+
+.l-nav__link {
+    display: flex;
+    gap: 20px;
+}
+
+.l-main {
+    margin-inline: min(20%, 20px);
+}
+
+.l-title {
+    display: flex;
+    flex-direction: column;
+    width: fit-content;
+    margin-block-end: 24px;
+    margin-inline: auto;
+}
+
+.l-works__list {
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+}
+
+.l-works__list_desc {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+
+.l-about {
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+}
+
+.l-about__list {
+    display: flex;
+    gap: 16px;
+}
+
+.l-about__list--column {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.l-footer {
+    background: var(--grayish-yellow);
+    height: 100px;
+    padding-block: 50px;
+    text-align: center;
+}
+
+.l-topbtn {
+    position: fixed;
+    right: 20px;
+    bottom: 20px;
+}
+
+.l-works-detail {
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+}
+
+.l-works-detail__list {
+    display: flex;
+    gap: 16px;
+}
+
+.l-box {
+    height: 400px;
+    padding-block-start: 156px;
+}
+
+
+/* コンポーネント */
+.c-header {
+    background: var(--grayish-yellow);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 56px;
+}
+
+.c-mv__text {
+    position: relative;
+    z-index: 100;
+    font-family: "Monomaniac One", sans-serif;
+    font-size: 64px;
+    color: var(--olive);
+    width: 100%;
+    height: 356px;
+    background: var(--white);
+
+}
+
+.c-title {
+    font-weight: bold;
+    font-size: 24px;
+}
+
+.c-title::before {
+    display: block;
+    content: attr(data-sub);
+    font-size: 12px;
+    color: var(--grayish-yellow);
+}
+
+.c-section__title {
+    font-weight: bold;
+}
+
+.c-section__li {
+    position: relative;
+    text-indent: 16px;
+}
+
+.c-section__li::before {
+    content: "";
+    width: 11px;
+    height: 11px;
+    border-radius: 50%;
+    background: var(--grayish-yellow);
+    position: absolute;
+    top: 8px;
+    left: 0;
+}
+
+
+.c-section__li_sidedesc {
+    font-size: 10px;
+}
+
+
+.c-works__link {
+    background: var(--grayish-yellow);
+    font-weight: bold;
+    color: var(--olive);
+    padding: 0.5rem;
+    border-radius: 14px;
+    font-size: 14px;
+    width: fit-content;
+    letter-spacing: 0.2em;
+}
+
+.c-works_sublink {
+    font-size: 12px;
+    font-weight: bold;
+    color: var(--olive);
+}
+
+.c-topbtn {
+    color: var(--white);
+    filter: drop-shadow(0 0 5px var(--olive));
+}
+
+blockquote {
+    font-style: italic;
+    font-size: 14px;
+    border: dotted 0.8px var(--olive);
+    padding: 0.5rem;
+}
+
+
+
+@media (min-width:600px) {}
