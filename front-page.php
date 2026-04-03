@@ -42,8 +42,8 @@
             <section id="about-me" class="l-section">
                 <div class="l-about">
                     <h2 data-sub="About Me" class="l-title c-title">自己紹介</h2>
-                    <p>自己紹介文が入る自己紹介文が入る自己紹介文が入る自己紹介文が入る</p>
-
+                    <p>前職では自社Webサイトの制作進行管理を担当し、コンテンツ更新やWordPressでの運用に携わっていました。
+                        現在は職業訓練校にて、HTML / CSS / JavaScript / PHP を用いたWebサイト制作を学び、コーポレートサイトの作成や静的サイトのWordPress化の実装経験があります。</p>
                     <div class="c-about__list">
                         <p class="c-section__title">使用言語</p>
                         <ul class="l-about__list">
